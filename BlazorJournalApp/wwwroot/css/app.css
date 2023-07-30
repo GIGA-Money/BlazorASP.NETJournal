@@ -1,5 +1,9 @@
+html{
+    background-color: cornflowerblue
+}
 h1:focus {
     outline: none;
+    color: black;
 }
 
 #blazor-error-ui {
@@ -30,3 +34,7 @@ h1:focus {
     .blazor-error-boundary::after {
         content: "An error has occurred."
     }
+
+.btn btn-primary{
+    color: green;
+}
