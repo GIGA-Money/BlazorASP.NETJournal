@@ -38,3 +38,7 @@ h1:focus {
 .btn btn-primary{
     color: green;
 }
+
+btn btn-secondary{
+    color: red
+}
