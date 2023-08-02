@@ -1,0 +1,52 @@
+﻿@page "/todo"
+@using System.Text.Json;
+
+<h3>ToDoForm</h3>
+<section>
+	<h3>TODO</h3>
+	<p>
+		<br />Should have a task class, with add/remove,
+		<br />Should have a way to save/load, save button (one day auto save).
+		<br />Should use a List of bools rather than fixed a constant count.
+		<br />Will have to figure out how to get a foreach in the HTML
+	</p>
+	<form>
+		<input type="checkbox" @bind="MyTasks[0].IsCompleted">
+		<label>@MyTasks[0].Name</label><br>
+
+		<input type="checkbox" @bind="MyTasks[1].IsCompleted">
+		<label>@MyTasks[1].Name</label><br>
+
+		<input type="checkbox" @bind="MyTasks[2].IsCompleted">
+		<label>@MyTasks[2].Name</label><br>
+
+		<input type="checkbox" @bind="MyTasks[3].IsCompleted">
+		<label>@MyTasks[3].Name</label><br>
+
+		<button type="button" @onclick="SaveTasks">Save</button>
+	</form>
+</section>
+
+@code {
+	List<Tasks> MyTasks = new List<Tasks>
+	{
+		new Tasks {Id = 0, Name = "Get the NameCheap SSL problem solved."},
+		new Tasks {Id = 1, Name = "Look into the keyboard media key setup."},
+		new Tasks {Id = 2, Name = "Look into a reduced Resume creation. (very reduced.)"},
+		new Tasks {Id = 3, Name = "Start studying on the CCSE FYE material."}
+	};
+
+	public class Tasks
+	{
+		public int Id { get; set; }
+		public string Name { get; set; }
+		public bool IsCompleted { get; set; }
+	}
+
+	void SaveTasks()
+	{
+		string jsonString = JsonSerializer.Serialize(MyTasks);
+		System.IO.File.WriteAllText("./Data/MyTasks.json", jsonString);
+		//Console.WriteLine(jsonString);
+	}
+}
