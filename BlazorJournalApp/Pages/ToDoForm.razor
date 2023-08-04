@@ -5,6 +5,11 @@
 <ul>
 	<li>These are task that are either heavely required to complete, or have a strong demand to completion.</li>
 	<li>I will most likly reflect tools like jira for the story/epic styled scrum methedology.</li>
+	<li>look to adding complete by date.</li>
+	<li>
+		look to adding a create/add task feature. <br />
+		look to making the task list load from storage.
+	</li>
 </ul>
 <section>
 	<h3>TODO</h3>
@@ -16,16 +21,16 @@
 	</p>
 	<form>
 		<input type="checkbox" @bind="MyTasks[0].IsCompleted">
-		<label>@MyTasks[0].Name</label><br>
+		<label>@MyTasks[0].Description</label><br>
 
 		<input type="checkbox" @bind="MyTasks[1].IsCompleted">
-		<label>@MyTasks[1].Name</label><br>
+		<label>@MyTasks[1].Description</label><br>
 
 		<input type="checkbox" @bind="MyTasks[2].IsCompleted">
-		<label>@MyTasks[2].Name</label><br>
+		<label>@MyTasks[2].Description</label><br>
 
 		<input type="checkbox" @bind="MyTasks[3].IsCompleted">
-		<label>@MyTasks[3].Name</label><br>
+		<label>@MyTasks[3].Description</label><br>
 
 		<button type="button" @onclick="SaveTasks">Save</button>
 	</form>
@@ -34,27 +39,69 @@
 @code {
 	List<Tasks> MyTasks = new List<Tasks>
 	{
-		new Tasks {Id = 0, Name = "Get the NameCheap SSL problem solved.", IsCompleted = true},
-		new Tasks {Id = 1, Name = "Look into the keyboard media key setup.",  IsCompleted = true},
-		new Tasks {Id = 2, Name = "Look into a reduced Resume creation. (very reduced.)"},
-		new Tasks {Id = 3, Name = "Start studying on the CCSE FYE material."},
+		new Tasks {0, "Get the NameCheap SSL problem solved.", IsCompleted = true},
+		new Tasks {Id = 1, Description = "Look into the keyboard media key setup.",  IsCompleted = true},
+		new Tasks {Id = 2, Description = "Look into a reduced Resume creation. (very reduced.)"},
+		new Tasks {Id = 3, Description = "Start studying on the CCSE FYE material."},
 
 	};
 
+	/// <summary>
+	/// Defines the various levels of task priority.
+	/// </summary>
+	/// <remarks>
+	/// <para>The priority levels include:</para>
+	/// <list type="bullet">
+	/// <item><description>Bingo: Tasks with loose time requirements, ranging from cleaning the house to reading a book.</description></item>
+	/// <item><description>FreeSpace: Similar to Bingo, but these tasks are not near time priority.</description></item>
+	/// <item><description>Low: These tasks have some time constraints or importance.</description></item>
+	/// <item><description>Medium: These tasks have more present time constraints.</description></item>
+	/// <item><description>High: These tasks have high time constraints or importance.</description></item>
+	/// <item><description>Critical: These tasks have the highest time constraints or importance.</description></item>
+	/// <item><description>Epic: These tasks are treated more like big story components, similar to how Scrum and other software methodologies work.</description></item>
+	/// </list>
+	/// </remarks>
+	public enum PriorityLevel
+	{
+		Bingo,
+		FreeSpace,
+		Low,
+		Medium,
+		High,
+		Critical,
+		Epic
+	}
+
+	/// <summary>
+	/// Represents a task with a unique identifier, description, completion status, target completion date, creation date, and priority level.
+	/// </summary>
 	public class Tasks
 	{
-		//look at moving these into a dictionary/hashset.
-		public int Id { get; set; }
-		//look at chaing this to description vs name
-		public string Name { get; set; }
-		//public due Date
-		public int date { get; set; }
-		//look at urgancy/prority
+		public Guid Id { get; set; } = Guid.NewGuid();
 		public bool IsCompleted { get; set; }
-		//look to adding complete by date.
-		//look to adding Task type.
-		//look to adding a create/add task feature.
-		//look to making the task list load from storage.
+		public string? Description { get; set; }
+		public DateTime? TargetCompletionDate { get; set; }
+		public DateTime? CreatedDate { get; set; }
+		public PriorityLevel TaskPriority { get; set; }
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Tasks"/> class.
+		/// </summary>
+		/// <param name="id">The unique identifier of the task.</param>
+		/// <param name="description">A description of the task.</param>
+		/// <param name="iscompleted">A value indicating whether the task is completed.</param>
+		/// <param name="completionDate">The target date for completing the task.</param>
+		/// <param name="createdDate">The date the task was created.</param>
+		/// <param name="priority">The priority level of the task.</param>
+		public Tasks(Guid id, string description, bool iscompleted, DateTime completionDate, DateTime createdDate, PriorityLevel priority)
+		{
+			Id = id;
+			Description = description;
+			IsCompleted = iscompleted;
+			TargetCompletionDate = completionDate;
+			CreatedDate = createdDate;
+			TaskPriority = priority;
+		}
 	}
 
 	void SaveTasks()
