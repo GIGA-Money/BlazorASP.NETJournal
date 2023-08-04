@@ -2,6 +2,10 @@
 @using System.Text.Json;
 
 <h3>ToDoForm</h3>
+<ul>
+	<li>These are task that are either heavely required to complete, or have a strong demand to completion.</li>
+	<li>I will most likly reflect tools like jira for the story/epic styled scrum methedology.</li>
+</ul>
 <section>
 	<h3>TODO</h3>
 	<p>
@@ -30,17 +34,27 @@
 @code {
 	List<Tasks> MyTasks = new List<Tasks>
 	{
-		new Tasks {Id = 0, Name = "Get the NameCheap SSL problem solved."},
-		new Tasks {Id = 1, Name = "Look into the keyboard media key setup."},
+		new Tasks {Id = 0, Name = "Get the NameCheap SSL problem solved.", IsCompleted = true},
+		new Tasks {Id = 1, Name = "Look into the keyboard media key setup.",  IsCompleted = true},
 		new Tasks {Id = 2, Name = "Look into a reduced Resume creation. (very reduced.)"},
-		new Tasks {Id = 3, Name = "Start studying on the CCSE FYE material."}
+		new Tasks {Id = 3, Name = "Start studying on the CCSE FYE material."},
+
 	};
 
 	public class Tasks
 	{
+		//look at moving these into a dictionary/hashset.
 		public int Id { get; set; }
+		//look at chaing this to description vs name
 		public string Name { get; set; }
+		//public due Date
+		public int date { get; set; }
+		//look at urgancy/prority
 		public bool IsCompleted { get; set; }
+		//look to adding complete by date.
+		//look to adding Task type.
+		//look to adding a create/add task feature.
+		//look to making the task list load from storage.
 	}
 
 	void SaveTasks()

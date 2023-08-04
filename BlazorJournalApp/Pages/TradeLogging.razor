@@ -1,0 +1,21 @@
+﻿<h3>TradeLogging</h3>
+
+@code {
+	using DailyLog.MyLog;
+	public class override MyLog{
+	public string ticker;
+	//make an enum/struct for trade type
+	public enum TradeType { };
+	//might end up making a second quantity, fraction quanity, to represent fraction shares.
+	public float price;
+	public int contractCount;
+	//I would consider fee, but they are hardly
+	public string notes, analysis;
+	//Trade result should be a method that is used to keep track of a trade outcome,
+	//so in the future context this trade result method would auto calculate when past the exparation and if on close,
+	//so might need a few overloads of these.
+	//market conditions will be a bit harder, this could just be some notes, but would be cool to have 1-2 major catalist
+
+	//Mental and emotional state, could just add this to notes.
+}
+}

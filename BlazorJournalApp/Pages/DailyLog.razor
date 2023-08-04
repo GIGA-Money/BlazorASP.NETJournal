@@ -1,0 +1,65 @@
+﻿@page "/dailylog"
+
+<h3>DailyLog</h3>
+<h5>The elements here should reflect more, past actions, daily choirs that did get done.</h5>
+<ul>
+	<li>Such as what I did as a part of my day that didn't take my todo list to get done.</li>
+	<li>These are the measuremetns of growth taht should be acknowledge, even if its the same repeating duties.</li>
+	<li>The todo list and those task are near requirments</li>
+	<li>
+		So everything must become serilizable, so I could eventually store this all on the web.
+		<br />should try to avoid acidentally creaing free JIRA.
+	</li>
+	<li>
+		good, good. You should probably make your note stuff a model
+		could even do inheritance depending on the differences and similarities between your trade log and thesis log
+		just a class where each variable is a public property with a get/set
+	</li>
+	well you kinda can
+	this is what my article page looks like
+	Image
+	When I was suggesting you wrap your html notes into a string I was thinking something like this.
+	I have a string called "HtmlContent" in my "ArticleContent" model. So I just embed it right there in the html
+	That way you can write your notes and what not in the text editor of your choosing so long as you can convert it to html.
+	You can even do something like how I did my article slug. That's what determines the page.
+	So the way I do it is take the slug from the page url, send it to my api and the api retrieves the content related to that slug,
+	then I just convert the html content string into a MarkupString object, and since this is razor I just use the @ symbol to embed it right in the html.
+	Instead of an article slug, you could just have it as the note title or log title or whatever.
+	I did it this way so I only have the 1 page to worry about and it can display all articles I'll ever make.
+</ul>
+
+<article>
+	<section>
+		<h3>Log</h3>
+		<ul>
+			<li @bind="LogOfTheDay[0]">@LogOfTheDay[0].Name</li>
+		</ul>
+	</section>
+</article>
+
+
+
+@code {
+
+	List<MyLog> LogOfTheDay = new List<MyLog>()
+	{
+		new MyLog {Id = 0, Name = "Taks", date = 8223}
+	};
+
+	public class MyLog
+	{
+		//look at moving these into a dictionary/hashset.
+		public int Id { get; set; }
+		//look at chaing this to description vs name
+		public string Name { get; set; }
+		//public due Date
+		public int date { get; set; }
+		//look at urgancy/prority
+		//public bool IsCompleted { get; set; }.
+		//look to adding complete by date.
+		//look to adding Task type.
+		//look to adding a create/add task feature.
+		//look to making the task list load from storage.
+	}
+
+}
