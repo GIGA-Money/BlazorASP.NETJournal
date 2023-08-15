@@ -1,21 +1,34 @@
-﻿<h3>TradeLogging</h3>
+﻿@*@page "/tradelogging"
+
+<h3>TradeLogging</h3>
+
+<form>
+	<label for="ticker">Ticker:</label>
+	<input id="ticker" @bind="myTradingLog.ticker"/>
+</form>
 
 @code {
-	using DailyLog.MyLog;
-	public class override MyLog{
-	public string ticker;
-	//make an enum/struct for trade type
-	public enum TradeType { };
-	//might end up making a second quantity, fraction quanity, to represent fraction shares.
+	using DailyLog;
+
+	public class MyTradingLog : MyLog
+	{
+	public enum TradeType { BTO, BTC, STO, STC };
+	public bool? isLong;
 	public float price;
 	public int contractCount;
+	public string? notes, analysis, ticker;
+	//make an enum/struct for trade type
+
+	//might end up making a second quantity, fraction quanity, to represent fraction shares.
+
 	//I would consider fee, but they are hardly
-	public string notes, analysis;
+	
 	//Trade result should be a method that is used to keep track of a trade outcome,
 	//so in the future context this trade result method would auto calculate when past the exparation and if on close,
 	//so might need a few overloads of these.
 	//market conditions will be a bit harder, this could just be some notes, but would be cool to have 1-2 major catalist
-
 	//Mental and emotional state, could just add this to notes.
+	}
+	private MyTradingLog myTradingLog = new MyTradingLog();
 }
-}
+*@

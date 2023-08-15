@@ -1,6 +1,7 @@
-html{
+html {
     background-color: cornflowerblue
 }
+
 h1:focus {
     outline: none;
     color: black;
@@ -35,10 +36,10 @@ h1:focus {
         content: "An error has occurred."
     }
 
-.btn btn-primary{
+.btn btn-primary {
     color: green;
 }
 
-btn btn-secondary{
+btn btn-secondary {
     color: red
 }

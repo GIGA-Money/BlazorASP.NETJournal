@@ -39,11 +39,10 @@
 @code {
 	List<Tasks> MyTasks = new List<Tasks>
 	{
-		new Tasks {0, "Get the NameCheap SSL problem solved.", IsCompleted = true},
-		new Tasks {Id = 1, Description = "Look into the keyboard media key setup.",  IsCompleted = true},
-		new Tasks {Id = 2, Description = "Look into a reduced Resume creation. (very reduced.)"},
-		new Tasks {Id = 3, Description = "Start studying on the CCSE FYE material."},
-
+		new Tasks(Guid.NewGuid(), "Get the NameCheap SSL problem solved.", true, DateTime.Now, DateTime.Now, PriorityLevel.Low),
+		new Tasks(Guid.NewGuid(), "Look into the keyboard media key setup.",true, DateTime.Now, DateTime.Now, PriorityLevel.Low),
+		new Tasks(Guid.NewGuid(), "Look into a reduced Resume creation. (very reduced.)", false, DateTime.Now, DateTime.Now, PriorityLevel.Low),
+		new Tasks(Guid.NewGuid(), "Start studying on the CCSE FYE material.", true, DateTime.Now, DateTime.Now, PriorityLevel.Low),
 	};
 
 	/// <summary>
