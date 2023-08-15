@@ -43,15 +43,15 @@
 
 	List<MyLog> LogOfTheDay = new List<MyLog>()
 	{
-		new MyLog {Id = 0, Name = "Taks", date = 8223}
+		new MyLog {Id = Guid.NewGuid(), Name = "Taks", date = 8223}
 	};
 
 	public class MyLog
 	{
 		//look at moving these into a dictionary/hashset.
-		public int Id { get; set; }
+		public Guid Id { get; set; }
 		//look at chaing this to description vs name
-		public string Name { get; set; }
+		public string? Name { get; set; }
 		//public due Date
 		public int date { get; set; }
 		//look at urgancy/prority

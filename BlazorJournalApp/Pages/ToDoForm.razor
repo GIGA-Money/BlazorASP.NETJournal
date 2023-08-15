@@ -39,10 +39,14 @@
 @code {
 	List<Tasks> MyTasks = new List<Tasks>
 	{
-		new Tasks(Guid.NewGuid(), "Get the NameCheap SSL problem solved.", true, DateTime.Now, DateTime.Now, PriorityLevel.Low),
-		new Tasks(Guid.NewGuid(), "Look into the keyboard media key setup.",true, DateTime.Now, DateTime.Now, PriorityLevel.Low),
-		new Tasks(Guid.NewGuid(), "Look into a reduced Resume creation. (very reduced.)", false, DateTime.Now, DateTime.Now, PriorityLevel.Low),
-		new Tasks(Guid.NewGuid(), "Start studying on the CCSE FYE material.", true, DateTime.Now, DateTime.Now, PriorityLevel.Low),
+		new Tasks(Guid.NewGuid(), "Get the NameCheap SSL problem solved.",
+		true, DateTime.Now, DateTime.Now, PriorityLevel.Low),
+		new Tasks(Guid.NewGuid(), "Look into the keyboard media key setup.",
+		true, DateTime.Now, DateTime.Now, PriorityLevel.Low),
+		new Tasks(Guid.NewGuid(), "Look into a reduced Resume creation. (very reduced.)",
+		false, DateTime.Now, DateTime.Now, PriorityLevel.Low),
+		new Tasks(Guid.NewGuid(), "Start studying on the CCSE FYE material.",
+		true, DateTime.Now, DateTime.Now, PriorityLevel.Low),
 	};
 
 	/// <summary>
@@ -81,7 +85,7 @@
 		public string? Description { get; set; }
 		public DateTime? TargetCompletionDate { get; set; }
 		public DateTime? CreatedDate { get; set; }
-		public PriorityLevel TaskPriority { get; set; }
+		public PriorityLevel? TaskPriority { get; set; }
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Tasks"/> class.
@@ -92,7 +96,8 @@
 		/// <param name="completionDate">The target date for completing the task.</param>
 		/// <param name="createdDate">The date the task was created.</param>
 		/// <param name="priority">The priority level of the task.</param>
-		public Tasks(Guid id, string description, bool iscompleted, DateTime completionDate, DateTime createdDate, PriorityLevel priority)
+		public Tasks(Guid id, string description, bool iscompleted, DateTime completionDate,
+			DateTime createdDate, PriorityLevel priority)
 		{
 			Id = id;
 			Description = description;
@@ -101,7 +106,19 @@
 			CreatedDate = createdDate;
 			TaskPriority = priority;
 		}
+		public Tasks(Guid id, string description, bool iscompleted)
+		{
+			Id = id;
+			Description = description;
+			IsCompleted = iscompleted;
+			//TargetCompletionDate = GetCompletionDate();
+			//CreatedDate = getCreatedDate();
+			//TaskPriority = getPiority();
+		}
 	}
+
+	//private DateTime GetTargetDate(Guid id)
+	//{ null;}
 
 	void SaveTasks()
 	{
