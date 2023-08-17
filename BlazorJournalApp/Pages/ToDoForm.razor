@@ -21,7 +21,7 @@
 	</p>
 	<form>
 		<input type="checkbox" @bind="MyTasks[0].IsCompleted">
-		<label>@MyTasks[0].Description</label><br>
+		<label>@MyTasks[0].Description, @MyTasks[0].TaskPriority</label><br>
 
 		<input type="checkbox" @bind="MyTasks[1].IsCompleted">
 		<label>@MyTasks[1].Description</label><br>
@@ -115,15 +115,23 @@
 			//CreatedDate = getCreatedDate();
 			//TaskPriority = getPiority();
 		}
+		public Tasks() { }
 	}
 
 	//private DateTime GetTargetDate(Guid id)
-	//{ null;}
+	//{ null; }
 
 	void SaveTasks()
 	{
-		string jsonString = JsonSerializer.Serialize(MyTasks);
-		System.IO.File.WriteAllText("./Data/MyTasks.json", jsonString);
+		//string jsonString = JsonSerializer.Serialize(MyTasks);
+		//System.IO.File.WriteAllText("./Data/MyTasks.json", jsonString);
 		//Console.WriteLine(jsonString);
+		string directoryPath = "./Data/";
+		if (!System.IO.Directory.Exists(directoryPath))
+		{
+			System.IO.Directory.CreateDirectory(directoryPath);
+		}
+		string jsonString = JsonSerializer.Serialize(MyTasks);
+		System.IO.File.WriteAllText(directoryPath + "MyTasks.json", jsonString);
 	}
 }
