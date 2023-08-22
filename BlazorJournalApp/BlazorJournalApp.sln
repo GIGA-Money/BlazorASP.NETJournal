@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorJournalApp", "BlazorJournalApp.csproj", "{31DE6B80-68D1-4CA7-96BB-18DC081BEBDC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyJournal.core", "..\MyJournal.core\MyJournal.core.csproj", "{6317B844-ECCA-4B41-B229-888962253563}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{31DE6B80-68D1-4CA7-96BB-18DC081BEBDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31DE6B80-68D1-4CA7-96BB-18DC081BEBDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31DE6B80-68D1-4CA7-96BB-18DC081BEBDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6317B844-ECCA-4B41-B229-888962253563}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6317B844-ECCA-4B41-B229-888962253563}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6317B844-ECCA-4B41-B229-888962253563}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6317B844-ECCA-4B41-B229-888962253563}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
